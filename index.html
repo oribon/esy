@@ -1,0 +1,91 @@
+<html>
+        <head>
+                <title>ESY</title>
+                <link href="/public/primer.css" rel="stylesheet" />
+                <script type="text/javascript" src="/public/js-yaml.min.js"></script>
+                <link href="/public/tabulator_modern.min.css" rel="stylesheet">
+                <script type="text/javascript" src="/public/tabulator.min.js"></script>
+                <script src="/public/all.min.js" ></script>
+                <style>
+                        textarea {resize:none; font-size: 16px; font-family: Arial, Helvetica, sans-serif; background-color: rgba(255,255,255,0.3); border: 1px solid black; font-weight: bold; }
+                        h1 {text-align:center;}
+                        h3 {text-align:center;}
+                        input[type="text"] {background-color: #ffffff; border: 1px solid black; opacity: 0.6; font-weight: bold; width:100%;}
+                        body {
+	                        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	                        background-size: 400% 400%;
+	                        animation: gradient 15s ease infinite;
+                        }
+
+                        @keyframes gradient {
+	                        0% { background-position: 0% 50%;}
+                                50% {background-position: 100% 50%;}
+                                100% {background-position: 0% 50%;}
+                        }
+
+                </style>
+        </head>
+
+        <body onload=Dump()>
+        <h1 class="text-light">External Secrets YAMLs</h1>
+        <br>
+        <div>
+        <div style="width: 25%; float:left; height:60%; margin-left: 10%;">
+                <h3>Fill:</h3>
+                <br>
+                <div style="margin-left: 30%; margin-right: 20%;">
+                        <div style="height:40%;">
+                        <input type="text" id="secretName" placeholder="Secret name"><br>
+                        <input type="text" id="secretEngine" placeholder="Secret engine name"><br>
+                        <input type="text" id="vaultSecretName" placeholder="Vault secret name"><br>
+                        <form style="width:100%;">
+                                <label>Use entire secret from Vault?</label>
+                                <div>
+                                        <input type="radio" name="yesno"  id="yes">Yes
+                                        <input type="radio" name="yesno" checked="checked" id="no">No
+                                </div>
+                        </form>
+                        <button id="add-row" style="width:100%; margin: 0 auto;">Add Row</button>
+                        </div>
+                </div>
+                <div style="height:55%; margin-top:7%;">
+                        <div id="myTable" ></div>
+                </div>                        
+        </div>
+
+        <div style="width:25%; height:60%; float:left;margin-left: 2%;">
+                <h3>ExternalSecret</h3>
+                <br>
+                <div style="border: 1px solid gray;  position:relative;">
+                <button class="btn" type="button" onclick="copyToClipboard()" style="float: right; display: block;position:absolute; height:7%; width:11%; top:0;left: 89%;right: 7%;bottom: 0; "><img src="/public/clippy.svg" width="100%" height="100%" style="border:none; margin: 0 auto;" alt="Copy to clipboard"></button>
+                <textarea id="esYAML" readonly style="border:none; width:100%; height:100%;"></textarea>
+                
+                </div>
+        </div>
+
+        <div style="width:25%; height:60%; margin-left: 2%; float: left;">
+                <h3>Secret</h3>
+                <br>
+                <textarea id="secretYAML" style="width:100%; height:100%;" name="secretYAML" readonly ></textarea>
+        </div>
+        <br>
+        
+        <img src="/public/shauli.png" width="15%" height="20%" style="border:none; margin-top: 5%; margin-left:1%;" >
+        <img src="/public/shauli.png" width="15%" height="20%" style="border:none; margin-top: 5%; margin-left:68% ;transform: rotateY(180deg);" >
+        
+
+        </div>
+
+        <script src="/public/index.js"></script>
+        <script>
+                function copyToClipboard() {
+                        var copyText = document.getElementById("esYAML");
+                        copyText.select();
+                        copyText.setSelectionRange(0, 99999);
+                        document.execCommand("copy");
+                        if (window.getSelection) {window.getSelection().removeAllRanges();}
+                        else if (document.selection) {document.selection.empty();}
+}
+        </script>
+        </body>
+</html>
