@@ -39,6 +39,8 @@ function Dump() {
                     },
                     "Type": "Opaque"  
                 }
+    document.getElementById("myTable").style.display = 'none';
+    document.getElementById("add-row").style.display = 'none';
     } else {
         esJsonObject =  {
             "apiVersion"      : "kubernetes-client.io/v1",
@@ -62,6 +64,8 @@ function Dump() {
             "data": arr2,
             "Type": "Opaque"  
         }
+        document.getElementById("myTable").style.display = 'block';
+        document.getElementById("add-row").style.display = 'block';
     }
 
     var esTxtArea ;
