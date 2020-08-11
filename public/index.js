@@ -21,7 +21,6 @@ function Dump() {
                     },
                     "spec": {
                         "backendType": "vault",
-                        "vaultMountPoint": "{{ .Values.cluster_name }}",
                         "vaultRole": secretEngine + "-role",
                         "dataFrom": [secretEngine + "/data/" + vaultSecretName]
                     }
@@ -50,7 +49,6 @@ function Dump() {
             },
             "spec": {
                 "backendType": "vault",
-                "vaultMountPoint": "{{ .Values.cluster_name }}",
                 "vaultRole": secretEngine + "-role",
                 "data": arr
             }
