@@ -21,7 +21,7 @@ function Dump() {
                     },
                     "spec": {
                         "backendType": "vault",
-                        "vaultRole": secretEngine + "-role",
+                        "vaultRole": secretEngine + "-ro",
                         "dataFrom": [secretEngine + "/data/" + vaultSecretName]
                     }
                 }
@@ -49,7 +49,7 @@ function Dump() {
             },
             "spec": {
                 "backendType": "vault",
-                "vaultRole": secretEngine + "-role",
+                "vaultRole": secretEngine + "-ro",
                 "data": arr
             }
         }
